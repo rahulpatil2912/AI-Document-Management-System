@@ -1,9 +1,9 @@
 import os
 
-from pipeline.pdf_reader import extract_text_from_pdf
+from readers.pdf_reader import extract_text_from_pdf
 from analyzer.text_quality import analyze_text_quality
 
-from pipeline.pdf_reader import extract_text_from_pdf
+from readers.pdf_reader import extract_text_from_pdf
 
 
 def run_pipeline():

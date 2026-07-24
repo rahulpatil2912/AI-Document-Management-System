@@ -31,6 +31,15 @@ Build an AI-powered Intelligent Document Management System that can automaticall
 - [x] Added word count analysis
 - [x] Introduced quality score calculation
 - [x] Added OCR decision logic
+- Refactored project structure
+- Created dedicated readers module
+- Created analyzer module
+- Created converter module
+- Improved project architecture
+- Implemented PDF to Image Converter
+- Converts one page at a time
+- Automatically creates temp folder
+- Saves page images for OCR processing
 
 ### In Progress
 - [ ] Document Processing Pipeline

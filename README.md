@@ -47,6 +47,8 @@ This system automatically:
 - Text Quality Analyzer for extracted document content
 - Automatic quality scoring based on extracted text
 - OCR recommendation for low-quality document extraction
+- PDF page to image conversion using PyMuPDF
+- Temporary image generation for OCR workflow
 
 ---
 
@@ -64,6 +66,15 @@ This system automatically:
 - Web dashboard
 
 ---
+
+## Project Architecture
+
+The project follows a modular architecture where each module has a single responsibility.
+
+- Readers → Read documents
+- Analyzer → Analyze extracted text
+- Converter → Convert document formats
+- Pipeline → Control workflow
 
 ## Technology Stack
 
