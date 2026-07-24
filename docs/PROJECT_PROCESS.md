@@ -40,6 +40,10 @@ Build an AI-powered Intelligent Document Management System that can automaticall
 - Converts one page at a time
 - Automatically creates temp folder
 - Saves page images for OCR processing
+- Added EasyOCR integration
+- Automatic OCR for low-quality PDFs
+- Automatic text quality re-analysis after OCR
+- OCR images are generated and deleted automatically
 
 ### In Progress
 - [ ] Document Processing Pipeline

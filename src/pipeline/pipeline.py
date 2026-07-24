@@ -2,8 +2,7 @@ import os
 
 from readers.pdf_reader import extract_text_from_pdf
 from analyzer.text_quality import analyze_text_quality
-
-from readers.pdf_reader import extract_text_from_pdf
+from ocr.ocr_reader import extract_text_using_ocr
 
 
 def run_pipeline():
@@ -32,8 +31,10 @@ def run_pipeline():
         print(f"Processing: {pdf}")
 
         try:
+            # Step 1: Extract text using PDF Reader
             extracted_text = extract_text_from_pdf(pdf_path)
 
+            # Step 2: Analyze extracted text
             analysis = analyze_text_quality(extracted_text)
 
             print("✓ Text extracted successfully.")
@@ -42,14 +43,29 @@ def run_pipeline():
             print(f"Quality Score  : {analysis['quality_score']}")
             print(f"Needs OCR      : {analysis['needs_ocr']}")
 
+            # Step 3: Run OCR if text quality is poor
+            if analysis["needs_ocr"]:
+
+                print("\nLow quality detected. Running OCR...")
+
+                extracted_text = extract_text_using_ocr(pdf_path)
+
+                analysis = analyze_text_quality(extracted_text)
+
+                print("✓ OCR completed successfully.")
+                print("\nAfter OCR:")
+                print(f"Characters     : {analysis['character_count']}")
+                print(f"Words          : {analysis['word_count']}")
+                print(f"Quality Score  : {analysis['quality_score']}")
+                print(f"Needs OCR      : {analysis['needs_ocr']}")
+
             success += 1
 
         except Exception as e:
 
-            print(f"✗ Error : {e}")
+            print(f"✗ Error: {e}")
 
             failed += 1
-
             continue
 
     print("\n" + "=" * 50)
