@@ -1,6 +1,9 @@
 import os
 
 from pipeline.pdf_reader import extract_text_from_pdf
+from analyzer.text_quality import analyze_text_quality
+
+from pipeline.pdf_reader import extract_text_from_pdf
 
 
 def run_pipeline():
@@ -31,8 +34,13 @@ def run_pipeline():
         try:
             extracted_text = extract_text_from_pdf(pdf_path)
 
+            analysis = analyze_text_quality(extracted_text)
+
             print("✓ Text extracted successfully.")
-            print(f"Characters Extracted : {len(extracted_text)}")
+            print(f"Characters     : {analysis['character_count']}")
+            print(f"Words          : {analysis['word_count']}")
+            print(f"Quality Score  : {analysis['quality_score']}")
+            print(f"Needs OCR      : {analysis['needs_ocr']}")
 
             success += 1
 

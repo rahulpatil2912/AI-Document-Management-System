@@ -26,13 +26,18 @@ Build an AI-powered Intelligent Document Management System that can automaticall
 - [x] Automatic PDF detection from uploads folder
 - [x] Exception handling for document processing
 - [x] Processing summary generation
+- [x] Implemented Text Quality Analyzer
+- [x] Added character count analysis
+- [x] Added word count analysis
+- [x] Introduced quality score calculation
+- [x] Added OCR decision logic
 
 ### In Progress
 - [ ] Document Processing Pipeline
 
 ### Next Task
 
-OCR Integration for Scanned Documents
+Implement OCR module for scanned or low-quality documents.
 
 ---
 

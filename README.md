@@ -44,6 +44,9 @@ This system automatically:
 - PDF text extraction using PyMuPDF
 - Error handling for invalid or corrupted documents
 - Processing summary after pipeline execution
+- Text Quality Analyzer for extracted document content
+- Automatic quality scoring based on extracted text
+- OCR recommendation for low-quality document extraction
 
 ---
 
