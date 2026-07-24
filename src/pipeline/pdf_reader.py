@@ -16,12 +16,3 @@ def extract_text_from_pdf(pdf_path):
     document.close()
 
     return text
-
-
-if __name__ == "__main__":
-    pdf_path = "uploads/sample.pdf"
-
-    extracted_text = extract_text_from_pdf(pdf_path)
-
-    print("===== Extracted Text =====\n")
-    print(extracted_text)

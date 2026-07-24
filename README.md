@@ -39,7 +39,11 @@ This system automatically:
 
 ## Current Features
 
+- Automatic detection of PDF documents from the uploads folder
+- Batch processing of multiple PDF files
 - PDF text extraction using PyMuPDF
+- Error handling for invalid or corrupted documents
+- Processing summary after pipeline execution
 
 ---
 
