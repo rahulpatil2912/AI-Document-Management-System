@@ -8,6 +8,7 @@ from nlp.keyword_extractor import extract_keywords
 from ner.entity_extractor import extract_entities
 from ner.entity_validator import validate_entities
 from ocr.ocr_cleaner import clean_ocr_text
+from classifier.document_classifier import classify_document
 
 
 def run_pipeline():
@@ -83,6 +84,9 @@ def run_pipeline():
             # Step 7: Validate entities
             entities = validate_entities(entities)
 
+            # Step 8: Classify document
+            document_type, classification_score = classify_document(extracted_text)
+
             print("\nKeywords:")
             print("-" * 40)
 
@@ -110,6 +114,11 @@ def run_pipeline():
 
             if not has_entities:
                 print("No entities found.")
+
+            print("\nDocument Classification:")
+            print("-" * 40)
+            print(f"Document Type        : {document_type}")
+            print(f"Classification Score : {classification_score}")
 
             success += 1
 

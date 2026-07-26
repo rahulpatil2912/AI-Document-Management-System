@@ -10,191 +10,168 @@ Build an AI-powered Intelligent Document Management System that can automaticall
 - Classify documents
 - Generate metadata
 - Store documents in the correct folder
-- Provide an intelligent search system
+- Provide an easy search system
 
 ---
 
-# Current Status
+## Current Status
 
-## Completed
+### ✅ Completed
 
-### Project Setup
-- [x] Created GitHub repository
-- [x] Initialized Git
-- [x] Created virtual environment
-- [x] Installed project dependencies
-- [x] Designed modular project architecture
+- Created GitHub repository
+- Created project structure
+- Initialized Git
+- Created virtual environment
+- Installed required libraries
 
-### PDF Processing
-- [x] Implemented PDF text extraction using PyMuPDF
-- [x] Automatic PDF detection from uploads folder
-- [x] Multiple PDF processing
-- [x] Exception handling for document processing
-- [x] Processing summary generation
+### Document Reading
 
-### Text Quality Analysis
-- [x] Character count analysis
-- [x] Word count analysis
-- [x] Quality score calculation
-- [x] Automatic OCR decision logic
+- PDF Reader using PyMuPDF
+- Automatic Reader Factory
+- Batch processing of multiple documents
+- Automatic uploads folder detection
+- Exception handling
+- Processing summary generation
 
-### OCR Module
-- [x] PDF to Image conversion
-- [x] One page at a time image generation
-- [x] Automatic temporary image management
-- [x] EasyOCR integration
-- [x] Automatic OCR for low-quality PDFs
-- [x] Automatic text quality re-analysis after OCR
-- [x] Automatic cleanup of temporary images
+### Text Analysis
+
+- Text Quality Analyzer
+- Character count
+- Word count
+- Quality score calculation
+- Automatic OCR decision
+
+### OCR Pipeline
+
+- PDF to Image Converter
+- EasyOCR integration
+- Automatic OCR for scanned PDFs
+- OCR text cleaning
+- Automatic temporary image cleanup
+- OCR quality re-analysis
+
+### NLP Pipeline
+
+- Text Cleaner
+- Stopword removal
+- Keyword Extraction
+
+### Named Entity Recognition (NER)
+
+- Email extraction
+- Phone number extraction
+- URL extraction
+- Date extraction
+- Pincode extraction
+- PAN extraction
+- Aadhaar extraction
+
+### Entity Validation
+
+- Email validation
+- Phone validation
+- Date validation
+- Pincode validation
+- Aadhaar validation
+- Entity normalization
+
+### Document Classification
+
+- Rule-based document classifier
+- Weighted keyword matching
+- Resume classification
+- Invoice classification
+- Aadhaar classification
+- PAN classification
+- Passport classification
+- Certificate classification
+- Unknown document detection
+- Classification score generation
+
+---
+
+## 🚧 In Progress
+
+- Metadata Generation
+
+---
+
+## Next Tasks
+
+- Metadata Generation
+- Automatic Folder Organization
+- Database Integration
+- Search Engine
+- Web Dashboard
+
+---
+
+## Current Project Architecture
+
+Reader Factory
+        ↓
+Text Extraction
+        ↓
+Text Quality Analysis
+        ↓
+OCR (If Needed)
+        ↓
+OCR Cleaner
+        ↓
+Text Cleaner
+        ↓
+Keyword Extraction
+        ↓
+Entity Extraction
+        ↓
+Entity Validation
+        ↓
+Document Classification
+
+---
+
+## Learning Notes
+
+### Reader Factory
+
+Automatically selects the appropriate reader based on file type.
+
+### OCR
+
+Used only for scanned or low-quality documents.
 
 ### NLP
-- [x] Text Cleaning Module
-- [x] Remove extra spaces
-- [x] Remove unnecessary blank lines
-- [x] Normalize tabs
-- [x] Remove leading/trailing whitespace
-- [x] Integrated text cleaning into the processing pipeline
 
-### Keyword Extraction
-- [x] Implemented keyword extraction module
-- [x] Added custom stop-word filtering
-- [x] Extract top keywords from processed documents
-- [x] Integrated keyword extraction into the main pipeline
+Cleans extracted text and extracts meaningful keywords.
 
-### Pipeline
-- [x] Modular document processing pipeline
-- [x] Automatic quality analysis
-- [x] Automatic OCR execution when required
-- [x] Continue processing even if one document fails
-- [x] Successfully tested with multiple PDFs
-- [x] Successfully tested with scanned PDFs
-- [x] Successfully tested error handling
+### NER
+
+Extracts structured information from documents.
+
+### Document Classification
+
+Uses a weighted rule-based approach to identify document types based on keyword scoring.
 
 ---
 
-# Current Workflow
+## Future Modules
 
-```
-PDF
- │
- ▼
-PDF Reader
- │
- ▼
-Text Cleaning
- │
- ▼
-Text Quality Analysis
- │
- ├───────────────┐
- │               │
- ▼               ▼
-Good         Needs OCR
- │               │
- │         PDF → Image
- │               │
- │              OCR
- └───────────────┘
-         │
-         ▼
-   Clean Extracted Text
-```
+- Metadata Generator
+- Folder Manager
+- Database
+- Search Engine
+- Web Dashboard
+- Machine Learning Document Classifier (Future Upgrade)
 
 ---
 
-# Current Project Structure
-
-```
-AI-Document-Management-System/
-│
-├── docs/
-├── uploads/
-├── temp/
-├── src/
-│   ├── analyzer/
-│   ├── converters/
-│   ├── nlp/
-│   ├── ocr/
-│   ├── pipeline/
-│   ├── readers/
-│   └── main.py
-│
-├── requirements.txt
-├── README.md
-└── PROJECT_PROGRESS.md
-```
-
----
-
-# Learning Notes
-
-## PyMuPDF
-
-Purpose:
-- Read PDF documents
-- Extract digital text
-
-Limitation:
-- Cannot extract text from scanned PDFs.
-
----
-
-## EasyOCR
-
-Purpose:
-- Extract text from scanned documents
-- Process image-based PDFs
-
-Current Configuration:
-- CPU Processing
-- Automatic execution only for low-quality documents
-
----
-
-# Git Commits
+## Git Commits
 
 - Initial project structure
-- Implement PDF text extraction module
-- Add text quality analyzer
-- Implement multi-PDF processing pipeline
-- Add PDF to Image converter
-- Integrate EasyOCR into project
-- Add automatic OCR decision pipeline
-- Add NLP text cleaning module
-
----
-
-# Next Tasks
-
-- [ ] Reader Factory (Universal Document Reader)
-- [ ] DOCX Reader
-- [ ] TXT Reader
-- [ ] Image Reader
-- [ ] Excel Reader
-- [ ] Keyword Extraction
-- [ ] Named Entity Recognition (NER)
-- [ ] Document Classification
-- [ ] Metadata Generation
-- [ ] Database Integration
-- [ ] Smart Search
-- [ ] REST API (FastAPI)
-- [ ] Web Dashboard (React)
-- [ ] Authentication
-- [ ] Cloud Deployment
-
----
-
-# Long-Term Vision
-
-Build a complete AI-powered Enterprise Document Management System capable of:
-
-- Processing multiple document formats
-- Automatic OCR
-- Intelligent document understanding
-- Metadata generation
-- Smart semantic search
-- Automatic document organization
-- Web-based dashboard
-- API integration
-- Email automation
-- Cloud deployment
+- PDF Reader
+- OCR Pipeline
+- Text Cleaner
+- Keyword Extraction
+- Named Entity Recognition
+- Entity Validation
+- Rule-Based Document Classifier
