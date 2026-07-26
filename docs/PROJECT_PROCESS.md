@@ -88,21 +88,32 @@ Build an AI-powered Intelligent Document Management System that can automaticall
 - Unknown document detection
 - Classification score generation
 
+### Metadata Generation
+
+- Created Metadata Generator module
+- Automatic metadata creation
+- Generated document metadata dictionary
+- Added processing timestamp
+- Added OCR usage information
+- Added document statistics
+- Integrated metadata generation into pipeline
+
 ---
 
 ## 🚧 In Progress
 
-- Metadata Generation
+- Automatic Folder Organization
 
 ---
 
 ## Next Tasks
 
-- Metadata Generation
 - Automatic Folder Organization
+- Intelligent File Renaming
 - Database Integration
 - Search Engine
 - Web Dashboard
+- Machine Learning Based Document Classification (Future Version)
 
 ---
 
@@ -127,6 +138,8 @@ Entity Extraction
 Entity Validation
         ↓
 Document Classification
+        ↓
+Metadata Generation
 
 ---
 
@@ -175,3 +188,4 @@ Uses a weighted rule-based approach to identify document types based on keyword 
 - Named Entity Recognition
 - Entity Validation
 - Rule-Based Document Classifier
+- Metadata Generator

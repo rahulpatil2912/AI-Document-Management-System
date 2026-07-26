@@ -9,6 +9,7 @@ from ner.entity_extractor import extract_entities
 from ner.entity_validator import validate_entities
 from ocr.ocr_cleaner import clean_ocr_text
 from classifier.document_classifier import classify_document
+from metadata.metadata_generator import generate_metadata
 
 
 def run_pipeline():
@@ -37,6 +38,8 @@ def run_pipeline():
         print(f"Processing: {pdf}")
 
         try:
+            ocr_used = False
+
             # Step 1: Extract text using Reader Factory
             extracted_text = extract_text(pdf_path)
 
@@ -75,6 +78,8 @@ def run_pipeline():
                 print(f"Quality Score  : {analysis['quality_score']}")
                 print(f"Needs OCR      : {analysis['needs_ocr']}")
 
+                ocr_used = True
+
             # Step 5: Extract keywords
             keywords = extract_keywords(extracted_text)
 
@@ -86,6 +91,16 @@ def run_pipeline():
 
             # Step 8: Classify document
             document_type, classification_score = classify_document(extracted_text)
+
+            metadata = generate_metadata(
+                file_name=pdf,
+                analysis=analysis,
+                document_type=document_type,
+                classification_score=classification_score,
+                keywords=keywords,
+                entities=entities,
+                ocr_used=ocr_used,
+            )
 
             print("\nKeywords:")
             print("-" * 40)
@@ -119,6 +134,12 @@ def run_pipeline():
             print("-" * 40)
             print(f"Document Type        : {document_type}")
             print(f"Classification Score : {classification_score}")
+
+            print("\nMetadata:")
+            print("-" * 40)
+
+            for key, value in metadata.items():
+                print(f"{key}: {value}")
 
             success += 1
 

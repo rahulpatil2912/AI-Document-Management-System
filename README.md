@@ -97,6 +97,18 @@ Supports:
 
 Uses a weighted rule-based keyword scoring approach.
 
+## Metadata Generation
+
+- Automatic metadata generation
+- Processing timestamp
+- OCR usage tracking
+- Character count
+- Word count
+- Quality score
+- Document classification score
+- Keywords
+- Named entities
+
 ---
 
 # Project Workflow
@@ -143,6 +155,10 @@ Entity Validation
 
 Document Classification
 
+↓
+
+Metadata Generation
+
 ---
 
 # Technology Stack
@@ -163,9 +179,9 @@ Future:
 
 ---
 
-# Future Roadmap
+## Future Roadmap
 
-- Metadata Generation
+- Intelligent File Renaming
 - Automatic Folder Organization
 - Database Integration
 - Search Engine
@@ -178,15 +194,13 @@ Future:
 
 # Project Status
 
-🚧 Actively under development.
-
 Current milestone completed:
 
-✅ Intelligent Document Processing Pipeline
+✅ Metadata Generation
 
 Next milestone:
 
-➡️ Metadata Generation
+➡️ Intelligent File Renaming & Automatic Folder Organization
 
 ---
 
