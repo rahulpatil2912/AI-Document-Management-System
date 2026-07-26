@@ -55,6 +55,12 @@ Build an AI-powered Intelligent Document Management System that can automaticall
 - [x] Remove leading/trailing whitespace
 - [x] Integrated text cleaning into the processing pipeline
 
+### Keyword Extraction
+- [x] Implemented keyword extraction module
+- [x] Added custom stop-word filtering
+- [x] Extract top keywords from processed documents
+- [x] Integrated keyword extraction into the main pipeline
+
 ### Pipeline
 - [x] Modular document processing pipeline
 - [x] Automatic quality analysis

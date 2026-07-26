@@ -1,9 +1,13 @@
 import os
 
-from readers.pdf_reader import extract_text_from_pdf
+from readers.reader_factory import extract_text
 from analyzer.text_quality import analyze_text_quality
 from ocr.ocr_reader import extract_text_using_ocr
 from nlp.text_cleaner import clean_text
+from nlp.keyword_extractor import extract_keywords
+from ner.entity_extractor import extract_entities
+from ner.entity_validator import validate_entities
+from ocr.ocr_cleaner import clean_ocr_text
 
 
 def run_pipeline():
@@ -32,13 +36,13 @@ def run_pipeline():
         print(f"Processing: {pdf}")
 
         try:
-            # Step 1: Extract text using PDF Reader
-            extracted_text = extract_text_from_pdf(pdf_path)
+            # Step 1: Extract text using Reader Factory
+            extracted_text = extract_text(pdf_path)
 
-            # Step 2: Clean the extracted text
+            # Step 2: General text cleaning
             extracted_text = clean_text(extracted_text)
 
-            # Step 3: Analyze extracted text
+            # Step 3: Analyze quality
             analysis = analyze_text_quality(extracted_text)
 
             print("✓ Text extracted successfully.")
@@ -47,15 +51,20 @@ def run_pipeline():
             print(f"Quality Score  : {analysis['quality_score']}")
             print(f"Needs OCR      : {analysis['needs_ocr']}")
 
-            # Step 3: Run OCR if text quality is poor
+            # Step 4: OCR if needed
             if analysis["needs_ocr"]:
 
                 print("\nLow quality detected. Running OCR...")
 
                 extracted_text = extract_text_using_ocr(pdf_path)
 
+                # OCR-specific cleaning
+                extracted_text = clean_ocr_text(extracted_text)
+
+                # General cleaning
                 extracted_text = clean_text(extracted_text)
 
+                # Re-analyze after OCR
                 analysis = analyze_text_quality(extracted_text)
 
                 print("✓ OCR completed successfully.")
@@ -64,6 +73,43 @@ def run_pipeline():
                 print(f"Words          : {analysis['word_count']}")
                 print(f"Quality Score  : {analysis['quality_score']}")
                 print(f"Needs OCR      : {analysis['needs_ocr']}")
+
+            # Step 5: Extract keywords
+            keywords = extract_keywords(extracted_text)
+
+            # Step 6: Extract entities
+            entities = extract_entities(extracted_text)
+
+            # Step 7: Validate entities
+            entities = validate_entities(entities)
+
+            print("\nKeywords:")
+            print("-" * 40)
+
+            if keywords:
+                for keyword in keywords:
+                    print(f"• {keyword}")
+            else:
+                print("No keywords found.")
+
+            print("\nEntities:")
+            print("-" * 40)
+
+            has_entities = False
+
+            for entity_type, values in entities.items():
+
+                if values:
+
+                    has_entities = True
+
+                    print(f"\n{entity_type.replace('_', ' ').title()}:")
+
+                    for value in values:
+                        print(f"• {value}")
+
+            if not has_entities:
+                print("No entities found.")
 
             success += 1
 

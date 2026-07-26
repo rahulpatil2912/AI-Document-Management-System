@@ -76,6 +76,13 @@ The system automatically performs the following tasks:
 - Normalize tabs
 - Trim leading and trailing whitespace
 
+## NLP
+
+- Text cleaning
+- Keyword extraction
+- Custom stop-word filtering
+- Automatic keyword generation from processed documents
+
 ---
 
 # Current Processing Pipeline
