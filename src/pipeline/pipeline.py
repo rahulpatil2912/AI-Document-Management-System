@@ -3,6 +3,7 @@ import os
 from readers.pdf_reader import extract_text_from_pdf
 from analyzer.text_quality import analyze_text_quality
 from ocr.ocr_reader import extract_text_using_ocr
+from nlp.text_cleaner import clean_text
 
 
 def run_pipeline():
@@ -34,7 +35,10 @@ def run_pipeline():
             # Step 1: Extract text using PDF Reader
             extracted_text = extract_text_from_pdf(pdf_path)
 
-            # Step 2: Analyze extracted text
+            # Step 2: Clean the extracted text
+            extracted_text = clean_text(extracted_text)
+
+            # Step 3: Analyze extracted text
             analysis = analyze_text_quality(extracted_text)
 
             print("✓ Text extracted successfully.")
@@ -49,6 +53,8 @@ def run_pipeline():
                 print("\nLow quality detected. Running OCR...")
 
                 extracted_text = extract_text_using_ocr(pdf_path)
+
+                extracted_text = clean_text(extracted_text)
 
                 analysis = analyze_text_quality(extracted_text)
 

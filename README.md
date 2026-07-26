@@ -2,15 +2,17 @@
 
 ## Overview
 
-AI Document Management System is an intelligent document organization platform that automatically processes documents, extracts information, classifies them, generates metadata, stores them in the appropriate location, and provides a fast search system.
+The AI Document Management System is an intelligent document processing platform designed to automate the handling of business documents.
 
-The goal of this project is to reduce the time required to manually organize and search large numbers of documents within an organization.
+The system extracts text from documents, analyzes their quality, automatically applies OCR when required, prepares clean text for AI processing, and serves as the foundation for intelligent document classification, metadata generation, and document search.
+
+The project is being developed using a modular architecture so that new document types and AI capabilities can be added without changing the overall pipeline.
 
 ---
 
-## Problem Statement
+# Problem Statement
 
-Organizations receive thousands of documents such as:
+Organizations receive thousands of documents every day, such as:
 
 - Reports
 - Invoices
@@ -19,82 +21,199 @@ Organizations receive thousands of documents such as:
 - Letters
 - Official Documents
 
-Managing these documents manually becomes difficult because they are often not properly organized or labeled, making retrieval slow and inefficient.
+Managing these documents manually is time-consuming and inefficient. Documents are often difficult to organize, classify, and retrieve when needed.
 
 ---
 
-## Proposed Solution
+# Proposed Solution
 
-This system automatically:
+The system automatically performs the following tasks:
 
-1. Reads uploaded documents.
-2. Extracts text from the documents.
-3. Analyzes the content using AI and NLP.
-4. Identifies the document type.
-5. Generates metadata.
-6. Stores the document in the correct folder.
-7. Allows users to search documents quickly.
+1. Detects new documents.
+2. Extracts text from supported document formats.
+3. Evaluates extraction quality.
+4. Automatically performs OCR for scanned or low-quality documents.
+5. Cleans extracted text for AI processing.
+6. Prepares documents for NLP analysis.
+7. (Upcoming) Extracts keywords and entities.
+8. (Upcoming) Classifies document types.
+9. (Upcoming) Generates metadata.
+10. (Upcoming) Stores and indexes documents for intelligent search.
 
 ---
 
-## Current Features
+# Current Features
 
-- Automatic detection of PDF documents from the uploads folder
+## Document Processing
+
+- Automatic PDF detection
 - Batch processing of multiple PDF files
 - PDF text extraction using PyMuPDF
-- Error handling for invalid or corrupted documents
-- Processing summary after pipeline execution
-- Text Quality Analyzer for extracted document content
-- Automatic quality scoring based on extracted text
-- OCR recommendation for low-quality document extraction
-- PDF page to image conversion using PyMuPDF
-- Temporary image generation for OCR workflow
+- Exception handling for invalid or corrupted documents
+- Processing summary after execution
+
+## Text Quality Analysis
+
+- Character count analysis
+- Word count analysis
+- Quality score calculation
+- Automatic OCR decision based on extracted text quality
+
+## OCR Module
+
+- PDF to image conversion
+- Page-by-page OCR processing using EasyOCR
+- Automatic OCR for scanned documents
+- Automatic temporary image creation
+- Automatic cleanup of temporary files
+- Automatic text quality re-analysis after OCR
+
+## NLP
+
+- Text cleaning
+- Remove extra spaces
+- Remove unnecessary blank lines
+- Normalize tabs
+- Trim leading and trailing whitespace
 
 ---
 
-## Planned Features
+# Current Processing Pipeline
 
-- OCR for scanned documents
-- NLP-based text analysis
-- Keyword extraction
-- Document classification
-- Metadata generation
-- Automatic folder organization
-- Database integration
-- Document search
-- User authentication
-- Web dashboard
+```text
+                PDF
+                 │
+                 ▼
+          PDF Text Extraction
+                 │
+                 ▼
+           NLP Text Cleaning
+                 │
+                 ▼
+       Text Quality Analysis
+                 │
+       ┌─────────┴─────────┐
+       │                   │
+       ▼                   ▼
+ Good Quality        Low Quality
+       │                   │
+       │             PDF → Image
+       │                   │
+       │                  OCR
+       │                   │
+       └─────────┬─────────┘
+                 ▼
+          Clean Extracted Text
+```
 
 ---
 
-## Project Architecture
+# Project Structure
 
-The project follows a modular architecture where each module has a single responsibility.
+```
+AI-Document-Management-System/
+│
+├── docs/
+├── uploads/
+├── temp/
+│
+├── src/
+│   ├── analyzer/
+│   ├── converters/
+│   ├── nlp/
+│   ├── ocr/
+│   ├── pipeline/
+│   ├── readers/
+│   └── main.py
+│
+├── requirements.txt
+├── README.md
+└── PROJECT_PROGRESS.md
+```
 
-- Readers → Read documents
-- Analyzer → Analyze extracted text
-- Converter → Convert document formats
-- Pipeline → Control workflow
+---
 
-## Technology Stack
+# Technology Stack
+
+## Programming Language
 
 - Python
+
+## Libraries
+
 - PyMuPDF
+- EasyOCR
+- OpenCV
+- Pillow
+- NumPy
+
+## Development Tools
+
 - Git
 - GitHub
-
-(More technologies will be added as the project develops.)
-
----
-
-## Project Status
-
-🚧 Currently under development.
-
-The project is being built module by module following a scalable pipeline architecture.
+- VS Code
 
 ---
 
-## Author
+# Roadmap
 
-Rahul Patil
+### Completed
+
+- Project setup
+- PDF reader
+- Multi-document processing
+- Text quality analyzer
+- PDF to image converter
+- OCR integration
+- Automatic OCR decision
+- NLP text cleaning
+
+### Upcoming
+
+- Universal Document Reader (Factory Pattern)
+- DOCX Reader
+- TXT Reader
+- Image Reader
+- Excel Reader
+- Keyword Extraction
+- Named Entity Recognition (NER)
+- Document Classification
+- Metadata Generation
+- Database Integration
+- Smart Search
+- REST API using FastAPI
+- React Web Dashboard
+- User Authentication
+- Email Automation
+- Cloud Deployment
+
+---
+
+# Future Vision
+
+The long-term goal is to build a complete AI-powered Enterprise Document Management System capable of:
+
+- Processing multiple document formats
+- Intelligent OCR
+- AI-powered document understanding
+- Automatic metadata generation
+- Semantic document search
+- Automatic document organization
+- REST API integration
+- Email automation
+- Web-based dashboard
+- Cloud deployment
+
+---
+
+# Project Status
+
+🚧 **Currently Under Active Development**
+
+The project is being developed incrementally, with each module tested independently before being integrated into the main processing pipeline.
+
+---
+
+# Author
+
+**Rahul Patil**
