@@ -10,6 +10,7 @@ from ner.entity_validator import validate_entities
 from ocr.ocr_cleaner import clean_ocr_text
 from classifier.document_classifier import classify_document
 from metadata.metadata_generator import generate_metadata
+from organizer.file_renamer import generate_filename
 
 
 def run_pipeline():
@@ -92,8 +93,15 @@ def run_pipeline():
             # Step 8: Classify document
             document_type, classification_score = classify_document(extracted_text)
 
+            # Step 9: Renaming the file
+            generated_filename = generate_filename(
+                document_type,
+                pdf
+            )
+
             metadata = generate_metadata(
                 file_name=pdf,
+                generated_filename=generated_filename,
                 analysis=analysis,
                 document_type=document_type,
                 classification_score=classification_score,

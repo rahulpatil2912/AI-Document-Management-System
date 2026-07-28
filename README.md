@@ -109,6 +109,16 @@ Uses a weighted rule-based keyword scoring approach.
 - Keywords
 - Named entities
 
+### File Renaming
+
+- Created File Renamer module
+- Automatic filename generation based on document type
+- Generates meaningful filenames for classified documents
+- Removes invalid filename characters
+- Handles unknown documents with default naming
+- Designed for future AI-based filename generation
+- Integrated filename generation into pipeline
+
 ---
 
 # Project Workflow
@@ -181,7 +191,6 @@ Future:
 
 ## Future Roadmap
 
-- Intelligent File Renaming
 - Automatic Folder Organization
 - Database Integration
 - Search Engine

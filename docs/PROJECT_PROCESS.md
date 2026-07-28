@@ -98,6 +98,16 @@ Build an AI-powered Intelligent Document Management System that can automaticall
 - Added document statistics
 - Integrated metadata generation into pipeline
 
+### File Renaming
+
+- Created File Renamer module
+- Automatic filename generation based on document type
+- Generates meaningful filenames for classified documents
+- Removes invalid filename characters
+- Handles unknown documents with default naming
+- Designed for future AI-based filename generation
+- Integrated filename generation into pipeline
+
 ---
 
 ## 🚧 In Progress
@@ -165,6 +175,9 @@ Extracts structured information from documents.
 
 Uses a weighted rule-based approach to identify document types based on keyword scoring.
 
+### File Renaming
+Uses the metadata to rename the document
+
 ---
 
 ## Future Modules
@@ -189,3 +202,4 @@ Uses a weighted rule-based approach to identify document types based on keyword 
 - Entity Validation
 - Rule-Based Document Classifier
 - Metadata Generator
+- File Renamer
