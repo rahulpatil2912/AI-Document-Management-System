@@ -3,19 +3,24 @@ from datetime import datetime
 
 def generate_metadata(
     file_name,
+    generated_filename,
     analysis,
     document_type,
     classification_score,
     keywords,
     entities,
     ocr_used,
+    storage_path,
 ):
     """
     Generates structured metadata for a processed document.
     """
 
     metadata = {
-        "file_name": file_name,
+        "original_filename": file_name,
+        "generated_filename": generated_filename,
+        "storage_path": storage_path,
+
         "document_type": document_type,
         "classification_score": classification_score,
 

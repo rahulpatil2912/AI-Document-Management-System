@@ -88,16 +88,6 @@ Build an AI-powered Intelligent Document Management System that can automaticall
 - Unknown document detection
 - Classification score generation
 
-### Metadata Generation
-
-- Created Metadata Generator module
-- Automatic metadata creation
-- Generated document metadata dictionary
-- Added processing timestamp
-- Added OCR usage information
-- Added document statistics
-- Integrated metadata generation into pipeline
-
 ### File Renaming
 
 - Created File Renamer module
@@ -108,18 +98,32 @@ Build an AI-powered Intelligent Document Management System that can automaticall
 - Designed for future AI-based filename generation
 - Integrated filename generation into pipeline
 
+### Automatic Folder Organization
+
+- Stores document on the basis of classification
+- Automatic creates a folder for specific document into Documents
+- Rename the file if conflict arrives
+
+### Metadata Generation
+
+- Created Metadata Generator module
+- Automatic metadata creation
+- Generated document metadata dictionary
+- Added processing timestamp
+- Added OCR usage information
+- Added document statistics
+- Integrated metadata generation into pipeline
+
 ---
 
 ## 🚧 In Progress
 
-- Automatic Folder Organization
+- Database Integration
 
 ---
 
 ## Next Tasks
 
-- Automatic Folder Organization
-- Intelligent File Renaming
 - Database Integration
 - Search Engine
 - Web Dashboard
@@ -149,6 +153,10 @@ Entity Validation
         ↓
 Document Classification
         ↓
+File Renaming
+        ↓
+Automatic Folder Organization
+        ↓
 Metadata Generation
 
 ---
@@ -176,17 +184,23 @@ Extracts structured information from documents.
 Uses a weighted rule-based approach to identify document types based on keyword scoring.
 
 ### File Renaming
-Uses the metadata to rename the document
+
+Uses the rules to rename file
+
+### Automatic Folder Organization
+
+Stores all processed documents to 'Documents' folder
+
+### Metadata Generator
+
+Generates the metadata by using all extracted information
 
 ---
 
 ## Future Modules
 
-- Metadata Generator
-- Folder Manager
 - Database
 - Search Engine
-- Web Dashboard
 - Machine Learning Document Classifier (Future Upgrade)
 
 ---
@@ -201,5 +215,6 @@ Uses the metadata to rename the document
 - Named Entity Recognition
 - Entity Validation
 - Rule-Based Document Classifier
-- Metadata Generator
 - File Renamer
+- Automatic Folder Organization
+- Metadata Generator

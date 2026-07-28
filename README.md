@@ -38,8 +38,8 @@ The system automatically:
 7. Extracts named entities.
 8. Validates extracted entities.
 9. Classifies document type.
-10. (Future) Generates metadata.
-11. (Future) Stores documents automatically.
+10. Generates metadata.
+11. Stores documents automatically.
 
 ---
 
@@ -97,6 +97,22 @@ Supports:
 
 Uses a weighted rule-based keyword scoring approach.
 
+### File Renaming
+
+- Created File Renamer module
+- Automatic filename generation based on document type
+- Generates meaningful filenames for classified documents
+- Removes invalid filename characters
+- Handles unknown documents with default naming
+- Designed for future AI-based filename generation
+- Integrated filename generation into pipeline
+
+### Automatic Folder Organization
+
+- Stores document on the basis of classification
+- Automatic creates a folder for specific document into Documents
+- Rename the file if conflict arrives
+
 ## Metadata Generation
 
 - Automatic metadata generation
@@ -108,16 +124,6 @@ Uses a weighted rule-based keyword scoring approach.
 - Document classification score
 - Keywords
 - Named entities
-
-### File Renaming
-
-- Created File Renamer module
-- Automatic filename generation based on document type
-- Generates meaningful filenames for classified documents
-- Removes invalid filename characters
-- Handles unknown documents with default naming
-- Designed for future AI-based filename generation
-- Integrated filename generation into pipeline
 
 ---
 
@@ -167,6 +173,14 @@ Document Classification
 
 ↓
 
+File Renaming
+
+↓
+
+Automatic Folder Organization
+
+↓
+
 Metadata Generation
 
 ---
@@ -191,7 +205,6 @@ Future:
 
 ## Future Roadmap
 
-- Automatic Folder Organization
 - Database Integration
 - Search Engine
 - Web Dashboard
@@ -205,11 +218,11 @@ Future:
 
 Current milestone completed:
 
-✅ Metadata Generation
+✅ Automatic Folder Organization
 
 Next milestone:
 
-➡️ Intelligent File Renaming & Automatic Folder Organization
+➡️ Database Integration
 
 ---
 

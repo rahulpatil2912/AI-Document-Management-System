@@ -11,6 +11,7 @@ from ocr.ocr_cleaner import clean_ocr_text
 from classifier.document_classifier import classify_document
 from metadata.metadata_generator import generate_metadata
 from organizer.file_renamer import generate_filename
+from organizer.folder_manager import store_document
 
 
 def run_pipeline():
@@ -99,9 +100,16 @@ def run_pipeline():
                 pdf
             )
 
+            stored_path, generated_filename = store_document(
+                pdf_path,
+                document_type,
+                generated_filename
+            )
+
             metadata = generate_metadata(
                 file_name=pdf,
                 generated_filename=generated_filename,
+                storage_path=stored_path,
                 analysis=analysis,
                 document_type=document_type,
                 classification_score=classification_score,

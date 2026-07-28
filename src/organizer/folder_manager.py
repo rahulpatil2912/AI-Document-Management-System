@@ -2,47 +2,69 @@ import os
 import shutil
 
 
-# Category mapping
-DOCUMENT_CATEGORIES = {
-
-    "Resume": "Professional",
-
-    "Certificate": "Professional",
-
-    "Invoice": "Financial",
-
-    "Aadhaar Card": "Personal Documents",
-
-    "PAN Card": "Personal Documents",
-
-    "Passport": "Personal Documents",
-
-    "Unknown": "Others",
-
-    "Unknown Document": "Others",
-}
-
-
-def organize_document(source_path, filename, document_type):
+def create_document_folder(document_type):
     """
-    Renames and moves the document into the correct folder.
+    Creates a folder for the classified document type
+    if it does not already exist.
+
+    Returns the folder path.
     """
 
-    category = DOCUMENT_CATEGORIES.get(document_type, "Others")
+    base_folder = "documents"
 
-    destination_folder = os.path.join(
-        "processed_documents",
-        category,
+    folder_path = os.path.join(
+        base_folder,
         document_type
     )
 
-    os.makedirs(destination_folder, exist_ok=True)
+    os.makedirs(folder_path, exist_ok=True)
 
-    destination_path = os.path.join(
-        destination_folder,
-        filename
+    return folder_path
+
+def get_unique_filename(folder_path, filename):
+    """
+    Returns a unique filename if a file with the
+    same name already exists.
+    """
+
+    name, extension = os.path.splitext(filename)
+
+    candidate = filename
+    counter = 1
+
+    while os.path.exists(os.path.join(folder_path, candidate)):
+
+        candidate = f"{name} ({counter}){extension}"
+
+        counter += 1
+
+    return candidate
+
+def store_document(pdf_path, document_type, generated_filename):
+    """
+    Copies the processed document into its
+    classified folder and returns the final path.
+    """
+
+    # Create folder
+    folder_path = create_document_folder(document_type)
+
+    # Get unique filename
+    unique_filename = get_unique_filename(
+        folder_path,
+        generated_filename
     )
 
-    shutil.copy2(source_path, destination_path)
+    # Final destination
+    destination_path = os.path.join(
+        folder_path,
+        unique_filename
+    )
 
-    return destination_path
+    # Copy file
+    shutil.copy2(
+        pdf_path,
+        destination_path
+    )
+
+    return destination_path, unique_filename
