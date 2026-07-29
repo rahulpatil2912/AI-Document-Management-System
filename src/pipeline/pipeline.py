@@ -13,9 +13,12 @@ from metadata.metadata_generator import generate_metadata
 from organizer.file_renamer import generate_filename
 from organizer.folder_manager import store_document
 from database.db_operations import insert_document
+from database.db_schema import create_documents_table
 
 
 def run_pipeline():
+    create_documents_table()
+    
     uploads_folder = "uploads"
 
     pdf_files = [
@@ -161,7 +164,7 @@ def run_pipeline():
             insert_document(metadata)
 
             print("\n✓ Metadata saved to database.")
-            
+
             success += 1
 
         except Exception as e:
