@@ -12,6 +12,7 @@ from classifier.document_classifier import classify_document
 from metadata.metadata_generator import generate_metadata
 from organizer.file_renamer import generate_filename
 from organizer.folder_manager import store_document
+from database.db_operations import insert_document
 
 
 def run_pipeline():
@@ -157,6 +158,10 @@ def run_pipeline():
             for key, value in metadata.items():
                 print(f"{key}: {value}")
 
+            insert_document(metadata)
+
+            print("\n✓ Metadata saved to database.")
+            
             success += 1
 
         except Exception as e:

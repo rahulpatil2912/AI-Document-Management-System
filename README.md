@@ -29,17 +29,21 @@ Manually organizing these documents is slow, error-prone, and inefficient.
 
 The system automatically:
 
-1. Reads uploaded documents.
-2. Extracts text.
-3. Detects low-quality documents.
-4. Runs OCR when necessary.
-5. Cleans extracted text.
-6. Extracts keywords.
-7. Extracts named entities.
-8. Validates extracted entities.
-9. Classifies document type.
-10. Generates metadata.
-11. Stores documents automatically.
+- Automatic PDF text extraction
+- OCR support for scanned documents
+- Text quality analysis
+- OCR text cleaning
+- General text preprocessing
+- Automatic keyword extraction
+- Named Entity Recognition (NER)
+- Entity validation
+- Rule-based document classification
+- Intelligent document renaming
+- Automatic folder organization
+- Duplicate filename handling
+- Metadata generation
+- SQLite database integration
+- Automatic metadata storage
 
 ---
 
@@ -107,7 +111,7 @@ Uses a weighted rule-based keyword scoring approach.
 - Designed for future AI-based filename generation
 - Integrated filename generation into pipeline
 
-### Automatic Folder Organization
+### Folder Organization
 
 - Stores document on the basis of classification
 - Automatic creates a folder for specific document into Documents
@@ -125,63 +129,60 @@ Uses a weighted rule-based keyword scoring approach.
 - Keywords
 - Named entities
 
+## Database
+
+The system uses SQLite to persist processed document metadata.
+
+Each processed document stores:
+
+- Original filename
+- Generated filename
+- Storage path
+- Document type
+- Classification score
+- Character count
+- Word count
+- Quality score
+- OCR usage status
+- Keywords
+- Extracted entities
+- Processing timestamp
+
+The actual PDF files are stored inside the `documents/` directory, while SQLite stores only metadata and file locations for efficient searching and retrieval.
+
 ---
 
 # Project Workflow
 
 Document
-
 ↓
-
 Reader Factory
-
 ↓
-
 Text Extraction
-
 ↓
-
 Text Quality Analysis
-
 ↓
-
 OCR (If Needed)
-
 ↓
-
 OCR Cleaner
-
 ↓
-
 Text Cleaner
-
 ↓
-
 Keyword Extraction
-
 ↓
-
 Entity Extraction
-
 ↓
-
 Entity Validation
-
 ↓
-
 Document Classification
-
 ↓
-
 File Renaming
-
 ↓
-
-Automatic Folder Organization
-
+Folder Organization
 ↓
-
 Metadata Generation
+↓
+SQLite Database Integration
 
 ---
 
@@ -205,7 +206,6 @@ Future:
 
 ## Future Roadmap
 
-- Database Integration
 - Search Engine
 - Web Dashboard
 - Machine Learning Document Classification
@@ -218,11 +218,11 @@ Future:
 
 Current milestone completed:
 
-✅ Automatic Folder Organization
+✅ Database Integration
 
 Next milestone:
 
-➡️ Database Integration
+➡️ Search Engine
 
 ---
 

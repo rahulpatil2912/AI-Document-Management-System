@@ -98,7 +98,7 @@ Build an AI-powered Intelligent Document Management System that can automaticall
 - Designed for future AI-based filename generation
 - Integrated filename generation into pipeline
 
-### Automatic Folder Organization
+### Folder Organization
 
 - Stores document on the basis of classification
 - Automatic creates a folder for specific document into Documents
@@ -114,17 +114,31 @@ Build an AI-powered Intelligent Document Management System that can automaticall
 - Added document statistics
 - Integrated metadata generation into pipeline
 
+### SQLite Database Integration
+
+- Created Database module for persistent document storage
+- Implemented SQLite database connection
+- Designed documents table schema
+- Added automatic table creation
+- Implemented document metadata insertion
+- Implemented document retrieval functionality
+- Integrated database storage into the processing pipeline
+- Stored document metadata after successful processing
+- Saved original filename, generated filename, storage path, document type, classification score, OCR status, keywords, entities, and processing timestamp
+- Stored keywords and entities in JSON format for future retrieval
+- Verified successful insertion and retrieval of records
+- Completed end-to-end testing with multiple document types
+
 ---
 
 ## 🚧 In Progress
 
-- Database Integration
+- search Engine
 
 ---
 
 ## Next Tasks
 
-- Database Integration
 - Search Engine
 - Web Dashboard
 - Machine Learning Based Document Classification (Future Version)
@@ -155,51 +169,47 @@ Document Classification
         ↓
 File Renaming
         ↓
-Automatic Folder Organization
+Folder Organization
         ↓
 Metadata Generation
+        ↓
+SQLite Database Storage
 
 ---
 
 ## Learning Notes
 
 ### Reader Factory
-
 Automatically selects the appropriate reader based on file type.
 
 ### OCR
-
 Used only for scanned or low-quality documents.
 
 ### NLP
-
 Cleans extracted text and extracts meaningful keywords.
 
 ### NER
-
 Extracts structured information from documents.
 
 ### Document Classification
-
 Uses a weighted rule-based approach to identify document types based on keyword scoring.
 
 ### File Renaming
-
 Uses the rules to rename file
 
-### Automatic Folder Organization
-
+### Folder Organization
 Stores all processed documents to 'Documents' folder
 
 ### Metadata Generator
-
 Generates the metadata by using all extracted information
+
+### SQLite Database Storage
+Stores all metadata to SQLite database
 
 ---
 
 ## Future Modules
 
-- Database
 - Search Engine
 - Machine Learning Document Classifier (Future Upgrade)
 
@@ -216,5 +226,6 @@ Generates the metadata by using all extracted information
 - Entity Validation
 - Rule-Based Document Classifier
 - File Renamer
-- Automatic Folder Organization
+- Folder Organization
 - Metadata Generator
+- SQLite Database Storage
