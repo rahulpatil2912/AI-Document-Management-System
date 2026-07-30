@@ -21,6 +21,7 @@ def create_document_folder(document_type):
 
     return folder_path
 
+
 def get_unique_filename(folder_path, filename):
     """
     Returns a unique filename if a file with the
@@ -40,31 +41,33 @@ def get_unique_filename(folder_path, filename):
 
     return candidate
 
+
 def store_document(pdf_path, document_type, generated_filename):
     """
-    Copies the processed document into its
-    classified folder and returns the final path.
+    Prepares the destination path for the processed document.
+    Returns the destination path and unique filename.
     """
 
-    # Create folder
     folder_path = create_document_folder(document_type)
 
-    # Get unique filename
     unique_filename = get_unique_filename(
         folder_path,
         generated_filename
     )
 
-    # Final destination
     destination_path = os.path.join(
         folder_path,
         unique_filename
     )
 
-    # Copy file
-    shutil.copy2(
-        pdf_path,
+    return destination_path, unique_filename
+
+def move_document(source_path, destination_path):
+    """
+    Moves the processed document to its final destination.
+    """
+
+    shutil.move(
+        source_path,
         destination_path
     )
-
-    return destination_path, unique_filename

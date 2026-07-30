@@ -10,8 +10,9 @@ Build an AI-powered Intelligent Document Management System that can automaticall
 - Classify documents
 - Generate metadata
 - Store documents in the correct folder
-- Store metadata in SQLite
-- Provide an intelligent natural language search system
+- Store metadata in a database
+- Search documents intelligently
+- Display document statistics through a dashboard
 
 ---
 
@@ -19,15 +20,11 @@ Build an AI-powered Intelligent Document Management System that can automaticall
 
 ### ✅ Completed
 
-### Project Setup
-
 - Created GitHub repository
 - Created project structure
 - Initialized Git
 - Created virtual environment
 - Installed required libraries
-
----
 
 ### Document Reading
 
@@ -38,8 +35,6 @@ Build an AI-powered Intelligent Document Management System that can automaticall
 - Exception handling
 - Processing summary generation
 
----
-
 ### Text Analysis
 
 - Text Quality Analyzer
@@ -47,8 +42,6 @@ Build an AI-powered Intelligent Document Management System that can automaticall
 - Word count
 - Quality score calculation
 - Automatic OCR decision
-
----
 
 ### OCR Pipeline
 
@@ -59,15 +52,11 @@ Build an AI-powered Intelligent Document Management System that can automaticall
 - Automatic temporary image cleanup
 - OCR quality re-analysis
 
----
-
 ### NLP Pipeline
 
 - Text Cleaner
 - Stopword removal
 - Keyword Extraction
-
----
 
 ### Named Entity Recognition (NER)
 
@@ -79,8 +68,6 @@ Build an AI-powered Intelligent Document Management System that can automaticall
 - PAN extraction
 - Aadhaar extraction
 
----
-
 ### Entity Validation
 
 - Email validation
@@ -89,8 +76,6 @@ Build an AI-powered Intelligent Document Management System that can automaticall
 - Pincode validation
 - Aadhaar validation
 - Entity normalization
-
----
 
 ### Document Classification
 
@@ -105,141 +90,92 @@ Build an AI-powered Intelligent Document Management System that can automaticall
 - Unknown document detection
 - Classification score generation
 
----
-
 ### File Renaming
 
-- Created File Renamer module
-- Automatic filename generation based on document type
-- Generates meaningful filenames for classified documents
-- Removes invalid filename characters
-- Handles duplicate filenames automatically
-- Handles unknown documents with default naming
-- Designed for future AI-based filename generation
-- Integrated filename generation into pipeline
-
----
+- Automatic filename generation
+- Meaningful filenames
+- Invalid character removal
+- Duplicate filename handling
 
 ### Folder Organization
 
-- Automatic folder creation based on document classification
-- Stores processed documents into their respective folders
-- Handles filename conflicts automatically
-- Returns storage path for metadata generation
-
----
+- Automatic folder creation
+- Automatic document organization
+- Duplicate filename handling
+- File moving after successful processing
 
 ### Metadata Generation
 
-- Created Metadata Generator module
-- Automatic metadata creation
-- Generated document metadata dictionary
-- Added processing timestamp
-- Added OCR usage information
-- Added document statistics
-- Integrated metadata generation into pipeline
+- Automatic metadata generation
+- Processing timestamp
+- OCR usage information
+- Document statistics
+- Keywords
+- Named entities
 
----
+### SQLite Database
 
-### SQLite Database Integration
+- SQLite integration
+- Database schema
+- Automatic metadata storage
+- JSON storage for keywords and entities
+- Database retrieval functions
 
-- Created Database module for persistent document storage
-- Implemented SQLite database connection
-- Designed documents table schema
-- Automatic table creation
-- Implemented document metadata insertion
-- Implemented document retrieval functionality
-- Integrated database storage into processing pipeline
-- Stored original filename
-- Stored generated filename
-- Stored storage path
-- Stored document type
-- Stored classification score
-- Stored OCR status
-- Stored keywords
-- Stored entities
-- Stored processing timestamp
-- Stored keywords and entities in JSON format
-- Successfully verified insertion and retrieval
-
----
-
-### Intelligent Search Engine
-
-#### Query Parser
+### Search Engine
 
 - Natural language query parser
-- Automatic search term extraction
-- Document type detection
-- Sorting keyword detection
-- Supports queries like:
-  - resume newest
-  - rahul resume
-  - aadhaar oldest
-  - invoice
+- Keyword search
+- Entity search
+- Filename search
+- Document type search
+- Oldest/Newest document search
+- Ranking engine
+- Result formatter
+- Search manager
+- Streamlit integration
 
-#### Search Engine
+### Dashboard
 
-- SQLite metadata search
-- Searches using:
-  - Original filename
-  - Generated filename
-  - Document type
-  - Keywords
-  - Named entities
-- Duplicate result removal
+- Statistics module
+- Total document count
+- Document type statistics
+- OCR statistics
+- Average quality score
+- Latest processed documents
+- Streamlit dashboard integration
 
-#### Ranking Engine
+### Streamlit Frontend
 
-- Weighted scoring system
-- Filename priority
-- Document type priority
-- Keyword matching
-- Entity matching
-- Match explanation generation
-- Zero-score filtering
-
-#### Result Formatter
-
-- Formats search results for presentation
-- Returns only UI-friendly information
-- Hides unnecessary database fields
-- Provides clean output structure
-
-#### Search Manager
-
-- Integrates complete search workflow
-- Query parsing
-- Database searching
-- Document ranking
-- Result formatting
-- Sorting support
-- Final search result generation
+- Home page
+- Process Documents page
+- Search page
+- Dashboard page
+- Navigation sidebar
+- Fully integrated backend
 
 ---
 
 ## 🚧 In Progress
 
-- Streamlit User Interface
+- Dashboard Improvements
+- Document Viewer
+- Advanced Search Filters
 
 ---
 
 ## Next Tasks
 
-- Streamlit Dashboard
-- Open document directly from UI
-- Upload documents from UI
-- Search documents from UI
-- Statistics Dashboard
-- Machine Learning Based Document Classification (Version 2)
-- Semantic Search (Version 2)
-- AI Chat with Documents (Version 2)
+- Dashboard Charts
+- Document Preview
+- Download Documents
+- Advanced Search Filters
+- UI Improvements
+- Machine Learning Based Document Classification (Future Version)
 
 ---
 
 ## Current Project Architecture
 
-```
 Reader Factory
         ↓
 Text Extraction
@@ -270,12 +206,9 @@ SQLite Database
         ↓
 Search Engine
         ↓
-Ranking Engine
+Statistics Module
         ↓
-Result Formatter
-        ↓
-Final Search Results
-```
+Streamlit Frontend
 
 ---
 
@@ -297,65 +230,45 @@ Cleans extracted text and extracts meaningful keywords.
 
 Extracts structured information from documents.
 
-### Entity Validation
-
-Validates and normalizes extracted entities before storage.
-
 ### Document Classification
 
-Uses a weighted rule-based approach to classify documents.
-
-### File Renaming
-
-Generates meaningful filenames while avoiding filename conflicts.
+Uses weighted keyword scoring.
 
 ### Folder Organization
 
-Stores processed documents into their respective folders.
+Moves processed files into categorized folders.
 
-### Metadata Generator
+### Metadata
 
-Creates structured metadata using extracted information.
+Stores document information for searching.
 
-### SQLite Database
+### SQLite
 
-Stores document metadata for persistent storage and searching.
+Stores metadata only, not actual documents.
 
 ### Search Engine
 
-Searches documents using filenames, document type, keywords and extracted entities.
+Supports natural language searching with ranking.
 
-### Ranking Engine
+### Dashboard
 
-Ranks documents according to weighted field matching for better search relevance.
-
-### Result Formatter
-
-Converts raw search results into a clean structure for future UI integration.
+Displays document statistics directly from the database.
 
 ---
 
 ## Future Modules
 
-### Version 1
-
-- Streamlit Dashboard
-- File Preview
-- Statistics Dashboard
-
-### Version 2
-
-- Machine Learning Document Classification
+- Dashboard Charts
+- Document Viewer
+- Machine Learning Classifier
 - Semantic Search
-- Duplicate Document Detection
-- AI Chat with Documents
-- Embedding-Based Search
+- Authentication
 
 ---
 
 ## Git Commits
 
-- Initial Project Structure
+- Initial project structure
 - PDF Reader
 - OCR Pipeline
 - Text Cleaner
@@ -366,8 +279,7 @@ Converts raw search results into a clean structure for future UI integration.
 - File Renamer
 - Folder Organization
 - Metadata Generator
-- SQLite Database Integration
-- Intelligent Search Engine
-- Ranking Engine
-- Search Manager
-- Result Formatter
+- SQLite Database
+- Search Engine
+- Dashboard
+- Streamlit Frontend

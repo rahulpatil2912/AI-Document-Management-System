@@ -2,9 +2,9 @@
 
 ## Overview
 
-AI Document Management System is an intelligent document organization platform that automatically processes PDF documents, extracts useful information, classifies document types, generates metadata, stores documents in organized folders, and provides a natural language search engine for fast document retrieval.
+AI Document Management System is an intelligent document organization platform that automatically processes documents, extracts useful information, classifies document types, generates metadata, stores documents in the correct location, and provides an intelligent search system through a modern Streamlit interface.
 
-The primary goal of this project is to reduce manual effort in organizing and searching large collections of documents while maintaining a modular and scalable architecture.
+The goal of this project is to reduce manual effort in managing large collections of organizational documents.
 
 ---
 
@@ -21,12 +21,7 @@ Organizations receive thousands of documents such as:
 - Letters
 - Reports
 
-Managing these documents manually is:
-
-- Time-consuming
-- Error-prone
-- Difficult to organize
-- Difficult to search later
+Managing these documents manually is slow, repetitive, and error-prone.
 
 ---
 
@@ -43,37 +38,31 @@ The system automatically performs:
 - Named Entity Recognition (NER)
 - Entity validation
 - Rule-based document classification
-- Intelligent document renaming
+- Intelligent file renaming
 - Automatic folder organization
 - Duplicate filename handling
 - Metadata generation
-- SQLite database storage
-- Natural language document search
-- Intelligent document ranking
-- Search result formatting
+- SQLite metadata storage
+- Intelligent search
+- Dashboard analytics
 
 ---
 
-# Current Features
+# Features
 
 ## Document Processing
 
 - Reader Factory
-- PDF Reading using PyMuPDF
+- PDF Reading
 - Batch Processing
 - Exception Handling
 
----
-
 ## OCR
 
-- Automatic OCR for scanned PDFs
-- PDF-to-Image Conversion
-- EasyOCR Integration
-- OCR Text Cleaning
+- Automatic OCR
+- PDF to Image Conversion
+- OCR Cleaning
 - Temporary Image Cleanup
-
----
 
 ## NLP
 
@@ -81,9 +70,7 @@ The system automatically performs:
 - Stopword Removal
 - Keyword Extraction
 
----
-
-## Named Entity Recognition (NER)
+## Named Entity Recognition
 
 - Email Detection
 - Phone Detection
@@ -93,8 +80,6 @@ The system automatically performs:
 - PAN Detection
 - Aadhaar Detection
 
----
-
 ## Entity Validation
 
 - Email Validation
@@ -102,9 +87,6 @@ The system automatically performs:
 - Date Validation
 - Aadhaar Validation
 - Pincode Validation
-- Entity Normalization
-
----
 
 ## Document Classification
 
@@ -118,35 +100,24 @@ Supports:
 - Certificate
 - Unknown Documents
 
-Uses a weighted rule-based keyword scoring approach.
-
----
+Uses weighted keyword scoring.
 
 ## File Renaming
 
-- Automatic filename generation
-- Meaningful filenames based on document type
-- Duplicate filename handling
-- Invalid filename removal
-- Unknown document handling
-
----
+- Intelligent filename generation
+- Duplicate handling
+- Invalid character removal
 
 ## Folder Organization
 
+- Automatic document categorization
 - Automatic folder creation
-- Stores documents according to classification
-- Duplicate filename conflict resolution
-
----
+- File moving after successful processing
 
 ## Metadata Generation
 
-Generates metadata including:
+Stores:
 
-- Original filename
-- Generated filename
-- Storage path
 - Processing timestamp
 - OCR usage
 - Character count
@@ -154,15 +125,11 @@ Generates metadata including:
 - Quality score
 - Classification score
 - Keywords
-- Extracted entities
-
----
+- Named entities
 
 ## SQLite Database
 
-The system stores all processed document metadata inside SQLite.
-
-Stored fields include:
+Stores:
 
 - Original filename
 - Generated filename
@@ -174,189 +141,134 @@ Stored fields include:
 - Quality score
 - OCR status
 - Keywords
-- Extracted entities
+- Entities
 - Processing timestamp
 
-The actual PDF files remain inside the `documents/` directory while SQLite stores only metadata and file locations for efficient searching.
+## Intelligent Search
 
----
+Supports searching by:
 
-# Intelligent Search Engine
-
-The project includes a natural language search engine capable of searching processed documents.
-
-### Query Parser
-
-- Natural language query parsing
-- Search term extraction
-- Document type detection
-- Sorting keyword detection
-
-Example queries:
-
-- `resume`
-- `rahul resume`
-- `invoice newest`
-- `aadhaar oldest`
-
----
-
-### Search Engine
-
-Searches documents using:
-
-- Original filename
-- Generated filename
-- Document type
+- Filename
+- Document Type
 - Keywords
-- Named entities
+- Named Entities
+- Natural Language Queries
+- Oldest Document
+- Newest Document
 
----
+Search results are ranked before being displayed.
 
-### Ranking Engine
+## Dashboard
 
-Ranks search results using weighted scoring based on:
+Displays:
 
-- Generated filename
-- Original filename
-- Document type
-- Keywords
-- Named entities
-
-Higher relevance documents appear first.
-
----
-
-### Search Manager
-
-Coordinates the complete search workflow:
-
-- Query parsing
-- Database searching
-- Document ranking
-- Result formatting
-
----
-
-### Result Formatter
-
-Converts internal search results into a clean structure suitable for future UI integration.
+- Total Documents
+- Document Type Distribution
+- OCR Usage Statistics
+- Average Quality Score
+- Latest Processed Documents
 
 ---
 
 # Project Workflow
 
-```
 Document
-      ↓
+↓
 Reader Factory
-      ↓
+↓
 Text Extraction
-      ↓
+↓
 Text Quality Analysis
-      ↓
+↓
 OCR (If Needed)
-      ↓
+↓
 OCR Cleaner
-      ↓
+↓
 Text Cleaner
-      ↓
+↓
 Keyword Extraction
-      ↓
+↓
 Entity Extraction
-      ↓
+↓
 Entity Validation
-      ↓
+↓
 Document Classification
-      ↓
+↓
 File Renaming
-      ↓
+↓
 Folder Organization
-      ↓
+↓
 Metadata Generation
-      ↓
+↓
 SQLite Database
-      ↓
+↓
 Search Engine
-      ↓
-Ranking Engine
-      ↓
-Result Formatter
-      ↓
-Search Results
-```
+↓
+Dashboard
+↓
+Streamlit UI
 
 ---
 
 # Technology Stack
 
-## Current
+### Backend
 
 - Python
 - SQLite
 - PyMuPDF
 - EasyOCR
 - PyTorch
-- Git
-- GitHub
 
-## Planned
+### Frontend
 
 - Streamlit
-- Machine Learning
-- Sentence Transformers
-- PostgreSQL
-- FastAPI / Flask
 
----
+### Tools
 
-# Future Roadmap
-
-## Version 1
-
-- Streamlit Dashboard
-- Document Upload Interface
-- Search Interface
-- Document Preview
-- Statistics Dashboard
-
-## Version 2
-
-- Machine Learning Document Classification
-- Semantic Search
-- AI Chat with Documents
-- Duplicate Document Detection
-- Embedding-based Search
-- Vector Database Integration
+- Git
+- GitHub
 
 ---
 
 # Project Status
 
-## ✅ Completed
+## Version 1.0 ✅
 
-- Document Processing Pipeline
-- OCR Pipeline
-- NLP Pipeline
-- Named Entity Recognition
-- Entity Validation
-- Rule-Based Document Classification
-- File Renaming
-- Folder Organization
+Completed:
+
+- Intelligent Document Processing Pipeline
+- OCR
+- NLP
+- NER
+- Rule-Based Classification
 - Metadata Generation
-- SQLite Database Integration
+- SQLite Database
 - Intelligent Search Engine
+- Statistics Dashboard
+- Streamlit Frontend
 
-## 🚧 Currently Working On
+---
 
-- Streamlit User Interface
+# Future Roadmap
+
+Version 1.1
+
+- Dashboard Charts
+- Document Preview
+- Download Documents
+- Advanced Search Filters
+- UI Improvements
+
+Version 2.0
+
+- Machine Learning Document Classification
+- Semantic Search
+- Authentication
+- REST API
 
 ---
 
 # Author
 
-**Rahul Patil**
-
-Computer Engineering Student
-
-AI Document Management System (Personal Project)
+Rahul Patil

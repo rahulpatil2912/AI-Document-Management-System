@@ -11,7 +11,10 @@ from ocr.ocr_cleaner import clean_ocr_text
 from classifier.document_classifier import classify_document
 from metadata.metadata_generator import generate_metadata
 from organizer.file_renamer import generate_filename
-from organizer.folder_manager import store_document
+from organizer.folder_manager import (
+    store_document,
+    move_document,
+)
 from database.db_operations import insert_document
 from database.db_schema import create_documents_table
 
@@ -162,6 +165,11 @@ def run_pipeline():
                 print(f"{key}: {value}")
 
             insert_document(metadata)
+
+            move_document(
+                pdf_path,
+                stored_path
+            )
 
             print("\n✓ Metadata saved to database.")
 
