@@ -5,7 +5,9 @@ __pycache__/
 *.py[cod]
 *$py.class
 
+# ==========================
 # Virtual Environment
+# ==========================
 .venv/
 venv/
 env/
@@ -34,6 +36,7 @@ temp/
 .pytest_cache/
 .coverage
 htmlcov/
+.mypy_cache/
 
 # ==========================
 # Build Files
@@ -41,8 +44,25 @@ htmlcov/
 build/
 dist/
 *.egg-info/
+*.spec
 
 # ==========================
 # Environment Variables
 # ==========================
 .env
+
+# ==========================
+# Streamlit
+# ==========================
+.streamlit/secrets.toml
+
+# ==========================
+# Jupyter
+# ==========================
+.ipynb_checkpoints/
+
+# ==========================
+# SQLite (Uncomment if you DON'T want database data in Git)
+# ==========================
+# *.db
+# *.sqlite3
