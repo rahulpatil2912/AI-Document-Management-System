@@ -5,40 +5,70 @@ def show_home():
 
     st.markdown(
         """
-        ### Intelligent Document Processing & Search
+### Intelligent Document Processing, Organization & Search
 
-        Automatically process PDF documents, extract metadata,
-        classify document types, organize files, and search
-        documents using natural language.
-        """
+Automatically process PDF documents using OCR, NLP and AI,
+classify them, organize them into folders, generate metadata,
+store everything in a database and search documents using
+natural language.
+"""
     )
 
     st.divider()
+
+    st.info("👈 Use the sidebar to navigate through the application.")
+
+    st.divider()
+
+    st.subheader("✨ Core Features")
 
     col1, col2, col3 = st.columns(3)
 
     with col1:
 
-        st.info(
+        st.success(
             """
-### 📂 Upload
+### 📂 Document Processing
 
-- Upload PDF Documents
-- Batch Upload
-- Secure Storage
+- PDF Reader
+- OCR Pipeline
+- Batch Processing
+- Text Extraction
+"""
+        )
+
+        st.success(
+            """
+### 🤖 AI Processing
+
+- NLP
+- Keyword Extraction
+- NER
+- Entity Validation
 """
         )
 
     with col2:
 
-        st.success(
+        st.info(
             """
-### ⚙️ Processing
+### 📑 Classification
 
-- OCR
-- NLP
-- Metadata
-- Classification
+- Resume
+- Invoice
+- Aadhaar
+- PAN
+- Certificate
+"""
+        )
+
+        st.info(
+            """
+### 📁 Organization
+
+- Auto Rename
+- Auto Folder Creation
+- Duplicate Handling
 """
         )
 
@@ -46,76 +76,71 @@ def show_home():
 
         st.warning(
             """
-### 🔍 Search
+### 🔍 Search Engine
 
 - Natural Language Search
-- Ranking Engine
+- Ranking
 - Smart Results
+- Metadata Search
 """
         )
-
-    st.divider()
-
-    col4, col5, col6 = st.columns(3)
-
-    with col4:
-
-        st.info(
-            """
-### 📊 Statistics
-
-- Documents
-- Categories
-- Processing Summary
-"""
-        )
-
-    with col5:
-
-        st.success(
-            """
-### 🗄 Database
-
-- SQLite
-- Metadata Storage
-- Fast Retrieval
-"""
-        )
-
-    with col6:
 
         st.warning(
             """
-### 🤖 AI Features
+### 📊 Dashboard
 
-- OCR
-- NER
-- Keyword Extraction
-- Rule-based Classification
+- Statistics
+- Charts
+- Recent Documents
+- Database Summary
 """
         )
 
     st.divider()
 
-    st.subheader("✅ Current Features")
+    st.subheader("⚙️ Processing Pipeline")
 
-    st.markdown(
+    st.code(
         """
-- PDF Reader
-- OCR Pipeline
-- NLP Pipeline
-- Named Entity Recognition
-- Entity Validation
-- Rule-Based Classification
-- Automatic File Renaming
-- Folder Organization
-- SQLite Integration
-- Intelligent Search Engine
-- Ranking Engine
-- Result Formatter
-"""
+Reader
+   ↓
+Text Extraction
+   ↓
+OCR (If Required)
+   ↓
+Text Cleaning
+   ↓
+Keyword Extraction
+   ↓
+Entity Recognition
+   ↓
+Document Classification
+   ↓
+File Renaming
+   ↓
+Folder Organization
+   ↓
+Metadata Generation
+   ↓
+SQLite Database
+   ↓
+Search Engine
+""",
+        language="text"
     )
 
     st.divider()
 
+    st.subheader("🛠 Technology Stack")
+
+    col1, col2, col3, col4 = st.columns(4)
+
+    col1.metric("Backend", "Python")
+    col2.metric("Database", "SQLite")
+    col3.metric("Frontend", "Streamlit")
+    col4.metric("AI", "OCR + NLP")
+
+    st.divider()
+
+    st.caption("🚀 AI Document Management System | Version 1.0")
     st.caption("Developed by Rahul Patil")

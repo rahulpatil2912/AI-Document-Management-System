@@ -1,11 +1,22 @@
 import streamlit as st
 
 from search.search_manager import search
+from search.open_document import open_document
+from search.preview_document import preview_document
 
 
 def show_search():
 
     st.header("🔍 Search Documents")
+
+    if "preview_document" not in st.session_state:
+        st.session_state.preview_document = None
+
+    if "search_results" not in st.session_state:
+        st.session_state.search_results = []
+
+    if "search_query" not in st.session_state:
+        st.session_state.search_query = ""
 
     with st.form("search_form"):
 
@@ -24,35 +35,86 @@ def show_search():
         if not query.strip():
 
             st.warning("Please enter a search query.")
-
             return
 
         results = search(query)
 
-        if not results:
+        st.session_state.search_results = results
+        st.session_state.search_query = query
 
-            st.error("No documents found.")
+    results = st.session_state.search_results
 
-            return
+    if not results:
+        return
 
-        st.success(f"Found {len(results)} document(s).")
+    st.success(f"Found {len(results)} document(s).")
+
+    st.divider()
+
+    for result in results:
+
+        st.markdown(f"## 📄 {result['filename']}")
+
+        st.write(f"**Type:** {result['document_type']}")
+        st.write(f"**Score:** {result['score']}")
+        st.write(f"**Processed At:** {result['processed_at']}")
+
+        st.write("**Matched Fields:**")
+
+        for field, values in result["matched_fields"].items():
+
+            if values:
+
+                st.write(f"• **{field}** : {', '.join(values)}")
+
+        col1, col2, col3 = st.columns(3)
+
+        with col1:
+
+            if st.button(
+                "👁 Open",
+                key=f"open_{result['original_filename']}",
+                width="stretch"
+            ):
+
+                success = open_document(result["storage_path"])
+
+                if success:
+                    st.success("Document opened successfully.")
+                else:
+                    st.error("Unable to open the document.")
 
         st.divider()
 
-        for result in results:
+        with col2:
 
-            st.markdown(f"## 📄 {result['filename']}")
+            with open(result["storage_path"], "rb") as pdf_file:
 
-            st.write(f"**Type:** {result['document_type']}")
-            st.write(f"**Score:** {result['score']}")
-            st.write(f"**Processed At:** {result['processed_at']}")
+                st.download_button(
+                    label="⬇ Download",
+                    data=pdf_file,
+                    file_name=result["filename"],
+                    mime="application/pdf",
+                    key=f"download_{result['original_filename']}",
+                    width="stretch"
+                )
 
-            st.write("**Matched Fields:**")
+        st.divider()
 
-            for field, values in result["matched_fields"].items():
+        with col3:
 
-                if values:
+            if st.button(
+                "👀 Preview",
+                key=f"preview_{result['original_filename']}",
+                width="stretch"
+            ):
 
-                    st.write(f"• **{field}** : {', '.join(values)}")
+                st.session_state.preview_document = result["storage_path"]
 
-            st.divider()
+    if st.session_state.preview_document:
+
+        st.divider()
+
+        st.subheader("📄 Document Preview")
+
+        preview_document(st.session_state.preview_document)
