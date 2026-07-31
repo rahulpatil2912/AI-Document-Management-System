@@ -1,274 +1,304 @@
-# AI Document Management System
+# 🤖 AI Document Management System
 
-## Overview
-
-AI Document Management System is an intelligent document organization platform that automatically processes documents, extracts useful information, classifies document types, generates metadata, stores documents in the correct location, and provides an intelligent search system through a modern Streamlit interface.
-
-The goal of this project is to reduce manual effort in managing large collections of organizational documents.
+An intelligent document management system built using Python and Streamlit that automatically processes PDF documents, extracts metadata, classifies document types, organizes files, and provides intelligent document search.
 
 ---
 
-# Problem Statement
+# 📌 Project Overview
 
-Organizations receive thousands of documents such as:
+Managing personal and organizational documents becomes difficult as the number of files increases. This project automates document management by combining OCR, NLP, metadata extraction, document classification, and intelligent search into a single application.
 
-- Resumes
-- Invoices
-- Aadhaar Cards
-- PAN Cards
-- Certificates
-- Passports
-- Letters
-- Reports
+The system automatically:
 
-Managing these documents manually is slow, repetitive, and error-prone.
-
----
-
-# Proposed Solution
-
-The system automatically performs:
-
-- PDF text extraction
-- OCR for scanned documents
-- Text quality analysis
-- OCR text cleaning
-- Text preprocessing
-- Keyword extraction
-- Named Entity Recognition (NER)
-- Entity validation
-- Rule-based document classification
-- Intelligent file renaming
-- Automatic folder organization
-- Duplicate filename handling
-- Metadata generation
-- SQLite metadata storage
-- Intelligent search
-- Dashboard analytics
+- Uploads PDF documents
+- Extracts document text
+- Performs OCR when required
+- Extracts metadata
+- Detects sensitive information
+- Classifies document type
+- Renames documents automatically
+- Organizes documents into folders
+- Stores metadata in SQLite
+- Performs Natural Language Search
+- Opens documents
+- Downloads documents
+- Previews documents inside the application
 
 ---
 
-# Features
+# 🚀 Features
 
-## Document Processing
+## 📂 Document Upload
 
-- Reader Factory
-- PDF Reading
-- Batch Processing
-- Exception Handling
+- Single PDF Upload
+- Batch PDF Upload
+- Upload Validation
 
-## OCR
+---
 
-- Automatic OCR
-- PDF to Image Conversion
-- OCR Cleaning
-- Temporary Image Cleanup
+## ⚙ Intelligent Document Processing
 
-## NLP
-
-- Text Cleaning
-- Stopword Removal
+- PDF Text Extraction
+- OCR Support (Scanned PDFs)
+- Metadata Extraction
 - Keyword Extraction
+- Named Entity Recognition (NER)
+- Sensitive Information Detection
+- Rule-Based Document Classification
+- Automatic File Renaming
+- Folder Organization
 
-## Named Entity Recognition
+---
 
-- Email Detection
-- Phone Detection
-- URL Detection
-- Date Detection
-- Pincode Detection
-- PAN Detection
-- Aadhaar Detection
-
-## Entity Validation
-
-- Email Validation
-- Phone Validation
-- Date Validation
-- Aadhaar Validation
-- Pincode Validation
-
-## Document Classification
-
-Supports:
+## 📄 Supported Document Types
 
 - Resume
-- Invoice
 - Aadhaar Card
 - PAN Card
-- Passport
 - Certificate
-- Unknown Documents
+- Invoice
+- Passport
+- Driving License
+- Bank Statement
+- Generic Document
 
-Uses weighted keyword scoring.
+---
 
-## File Renaming
+## 🗄 Database
 
-- Intelligent filename generation
-- Duplicate handling
-- Invalid character removal
+SQLite Database stores:
 
-## Folder Organization
-
-- Automatic document categorization
-- Automatic folder creation
-- File moving after successful processing
-
-## Metadata Generation
-
-Stores:
-
-- Processing timestamp
-- OCR usage
-- Character count
-- Word count
-- Quality score
-- Classification score
-- Keywords
-- Named entities
-
-## SQLite Database
-
-Stores:
-
-- Original filename
-- Generated filename
-- Storage path
-- Document type
-- Classification score
-- Character count
-- Word count
-- Quality score
-- OCR status
-- Keywords
-- Entities
-- Processing timestamp
-
-## Intelligent Search
-
-Supports searching by:
-
-- Filename
+- Original Filename
+- Generated Filename
+- Storage Path
 - Document Type
 - Keywords
 - Named Entities
-- Natural Language Queries
-- Oldest Document
-- Newest Document
+- OCR Status
+- Quality Score
+- Processing Time
+- Metadata
 
-Search results are ranked before being displayed.
+---
 
-## Dashboard
+## 🔍 Intelligent Search Engine
 
-Displays:
+Supports Natural Language Search.
+
+Example:
+
+- resume
+- newest resume
+- certificate
+- aadhaar
+- invoice
+- rahul
+- documents containing python
+
+Features
+
+- Ranking Engine
+- Metadata Search
+- Keyword Search
+- Entity Search
+- Filename Search
+- Document Type Search
+
+---
+
+## 📑 Search Result Actions
+
+Every search result supports
+
+- 👁 Open Document
+- ⬇ Download Document
+- 👀 Preview Document
+
+---
+
+## 📊 Dashboard
+
+Dashboard includes
 
 - Total Documents
-- Document Type Distribution
-- OCR Usage Statistics
+- Document Categories
 - Average Quality Score
-- Latest Processed Documents
+- OCR Statistics
+- Document Distribution Chart
+- Recently Processed Documents
 
 ---
 
-# Project Workflow
+## 🎨 User Interface
 
-Document
-↓
-Reader Factory
-↓
-Text Extraction
-↓
-Text Quality Analysis
-↓
-OCR (If Needed)
-↓
-OCR Cleaner
-↓
-Text Cleaner
-↓
-Keyword Extraction
-↓
-Entity Extraction
-↓
-Entity Validation
-↓
-Document Classification
-↓
-File Renaming
-↓
-Folder Organization
-↓
-Metadata Generation
-↓
-SQLite Database
-↓
-Search Engine
-↓
-Dashboard
-↓
-Streamlit UI
+Built using
+
+- Streamlit
+- Modern Sidebar Navigation
+- Responsive Layout
+- Dark Theme
+- Interactive Charts (Plotly)
 
 ---
 
-# Technology Stack
+# 🛠 Technology Stack
 
-### Backend
-
-- Python
-- SQLite
-- PyMuPDF
-- EasyOCR
-- PyTorch
-
-### Frontend
+## Frontend
 
 - Streamlit
 
-### Tools
+## Backend
 
-- Git
-- GitHub
+- Python
+
+## Database
+
+- SQLite
+
+## OCR
+
+- EasyOCR
+
+## NLP
+
+- spaCy
+
+## Charts
+
+- Plotly
+
+## PDF Processing
+
+- PyMuPDF
+- pdfplumber
 
 ---
 
-# Project Status
+# 📁 Project Structure
 
-## Version 1.0 ✅
+src/
 
-Completed:
+- ui/
+- components/
+- processing/
+- search/
+- dashboard/
+- database/
+- utils/
 
-- Intelligent Document Processing Pipeline
+documents/
+
+uploads/
+
+models/
+
+---
+
+# ⚡ Workflow
+
+Upload PDF
+
+↓
+
+OCR (If Required)
+
+↓
+
+Text Extraction
+
+↓
+
+Metadata Extraction
+
+↓
+
+NER
+
+↓
+
+Keyword Extraction
+
+↓
+
+Document Classification
+
+↓
+
+Automatic Rename
+
+↓
+
+Folder Organization
+
+↓
+
+SQLite Storage
+
+↓
+
+Natural Language Search
+
+↓
+
+Open / Download / Preview
+
+---
+
+# 📸 Current Screens
+
+- Home
+- Upload
+- Processing
+- Search
+- Dashboard
+- About
+
+---
+
+# ✅ Version 1 Completed
+
+Implemented
+
+- PDF Upload
+- Batch Processing
 - OCR
-- NLP
-- NER
-- Rule-Based Classification
-- Metadata Generation
+- NLP Pipeline
+- Metadata Extraction
+- Entity Extraction
+- Rule Based Classification
+- Automatic Rename
+- Folder Organization
 - SQLite Database
-- Intelligent Search Engine
-- Statistics Dashboard
-- Streamlit Frontend
+- Intelligent Search
+- Ranking Engine
+- Dashboard
+- Open Document
+- Download Document
+- PDF Preview
+- Modern UI
+- Sidebar Navigation
 
 ---
 
-# Future Roadmap
+# 🔜 Version 2 (Planned)
 
-Version 1.1
-
-- Dashboard Charts
-- Document Preview
-- Download Documents
-- Advanced Search Filters
-- UI Improvements
-
-Version 2.0
-
-- Machine Learning Document Classification
-- Semantic Search
-- Authentication
-- REST API
+- Inline PDF Preview
+- Close Preview
+- Delete Document
+- Rename Document
+- Better Search Cards
+- Advanced Filters
+- Export Search Results
+- User Authentication
+- Cloud Storage
+- AI Summarization
 
 ---
 
-# Author
+# 👨‍💻 Developed By
 
 Rahul Patil
+
+B.Tech Computer Engineering
+
+AI Document Management System (Major Project)
